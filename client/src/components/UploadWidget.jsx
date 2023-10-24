@@ -5,6 +5,7 @@ const UploadWidget = () => {
     const widgetRef = useRef();
 
     useEffect(() => {
+      let successfulUploads = 0;
       const cloudName = process.env.REACT_APP_CLOUDINARY_CLOUD_NAME;
       const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET;
 
@@ -17,8 +18,16 @@ const UploadWidget = () => {
       widgetRef.current = cloudinaryRef.current.createUploadWidget({
         cloudName: cloudName,
         uploadPreset: uploadPreset
-      }, function(err, results) {
-        console.log(results)
+      }, function(error, result) {
+        if (!error && result && result.event === "success") { 
+          successfulUploads += 1;
+        }
+        //Only reload if we successfully upload and close the widget using 'Done'
+        if (!error && result && result.event === "close") { 
+          if (successfulUploads > 0) {
+            window.location.reload()
+          }
+        }
       })
     }, [])
 

@@ -15,10 +15,10 @@ cloudinary.config({
 router.get('/fetch-gallery-images', (req, res) => {
   cloudinary.v2.search
   .expression(
-    'resource_type:image' // add your folder
+    'resource_type:image'
     )
-    .sort_by('public_id','desc')
-    .max_results(30)
+    .sort_by('created_at','desc')
+    .max_results(60)
     .execute()
     .then(result => res.send(result));
 })
