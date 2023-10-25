@@ -4,12 +4,12 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Gallery from "./gallery/Gallery";
 import Albums from "./albums/Albums";
 import Favorites from './favorites/Favorites';
-import SideNavBar from './components/SideNavBar';
-import TopNavBar from './components/TopNavBar';
+import SideNavBar from './home/SideNavBar';
+import TopNavBar from './home/TopNavBar';
 
 function App() {
   return (
-    <>
+    <div style={{backgroundColor: '#000000'}}>
       <TopNavBar />
       <div style={{display: 'flex'}}>
         <SideNavBar />
@@ -21,7 +21,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
-    </>
+    </div>
   );
 }
 

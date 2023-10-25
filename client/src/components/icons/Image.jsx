@@ -4,7 +4,7 @@ export function Image() {
       xmlns="http://www.w3.org/2000/svg" 
       width="25" 
       height="25" 
-      fill="currentColor" 
+      fill="#FFFFFF" 
       className="bi bi-image-fill" 
       viewBox="0 0 16 16"
     >

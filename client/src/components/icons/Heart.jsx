@@ -1,12 +1,12 @@
 export function Heart(props) {
-  const { className, onClick } = props;
+  const { className, style, onClick } = props;
   return (
-    <div className={className} onClick={onClick}>
+    <div className={className} style={style} onClick={onClick}>
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         width="25" 
         height="25" 
-        fill="currentColor" 
+        fill="#FFFFFF" 
         className="bi bi-heart" 
         viewBox="0 0 16 16"
         >

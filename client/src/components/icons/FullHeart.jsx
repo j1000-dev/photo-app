@@ -3,7 +3,7 @@ export function FullHeart() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="#FFFFFF"
       width="25px" 
       height="25px"
       className="w-6 h-6"
