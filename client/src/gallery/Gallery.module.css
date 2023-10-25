@@ -1,0 +1,14 @@
+.title {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.galleryContainer {
+  height: 100vh; /* Set the desired height for your gallery container */
+  overflow-y: scroll; /* Enable vertical scrolling when content overflows */
+  padding: 20px; /* Add padding as needed */
+}
+
+.galleryContent {
+  padding: 20px; /* Add padding to the gallery content */
+}
