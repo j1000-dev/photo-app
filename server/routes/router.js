@@ -27,12 +27,14 @@ router.post('/set-image-favorite-tag', (req, res) => {
   const public_id = req.body.public_id;
   cloudinary.v2.uploader
   .add_tag('favorites', public_id)
-  .then(result => res.status(200).send({ 
-    message: 'Tag added to image successfully', 
-    result: result})
-  ).catch(error => {
-    console.error('Error adding tag to image: ', error);
-    res.status(500).send('Failed to add tag to image');
+  .then(result => {
+    if (result.public_ids.length == 0) {
+      res.status(500).send({message: 'Failed to add photo to Favorites'});
+    } else {
+      res.status(200).send({ message: 'Photo added to Favorites', result: result })
+    }
+  }).catch(error => {
+    res.status(500).send({ message: 'Failed to add photo to Favorites', error: error.message })
   });
 })
 
