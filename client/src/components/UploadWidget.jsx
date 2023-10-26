@@ -1,8 +1,9 @@
 import { useRef, useEffect } from "react";
 
-const UploadWidget = () => {
+const UploadWidget = (props) => {
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
+    const { className } = props;
 
     useEffect(() => {
       let successfulUploads = 0;
@@ -32,7 +33,7 @@ const UploadWidget = () => {
     }, [])
 
     return (
-      <button className="btn btn-primary my-4" onClick={() => widgetRef.current.open()}>Upload</button>
+      <button className={className} onClick={() => widgetRef.current.open()}>Upload</button>
     )
 }
 

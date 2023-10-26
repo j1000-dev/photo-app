@@ -57,7 +57,7 @@ function SideNavBar() {
         </MenuItem>
       </Menu>
     </Sidebar>
-    <div class="main">
+    <div className="main">
       <div style={{ marginBottom: '16px' }}>
         {broken && (
           <button className="btn btn-secondary m-3" onClick={() => setToggled(!toggled)}>
