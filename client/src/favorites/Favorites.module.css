@@ -1,0 +1,19 @@
+.title {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.galleryContainer {
+  height: 100vh; 
+  width: 100vw;
+  overflow-y: scroll; 
+  padding: 20px; 
+}
+
+.galleryContent {
+  padding: 20px; 
+}
+
+.uploadBtn {
+  margin-right: 30px;
+}

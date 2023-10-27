@@ -24,6 +24,17 @@ router.get('/fetch-gallery-images', (req, res) => {
     .then(result => res.send(result));
 })
 
+router.get('/fetch-favorite-images', (req, res) => {
+  cloudinary.v2.search
+  .expression(
+    'resource_type:image AND tags=favorites' 
+    )
+    .sort_by('created_at','desc')
+    .max_results(60)
+    .execute()
+    .then(result => res.send(result));
+})
+
 router.post('/add-favorite-tag', (req, res) => {
   const public_id = req.body.public_id;
   cloudinary.v2.uploader

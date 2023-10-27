@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import UploadWidget from "../components/UploadWidget";
-import styles from './Gallery.module.css';
 import { CloudinaryImage } from "../components/CloudinaryImage";
+import styles from './Gallery.module.css';
 
 function Gallery() {
   const [gallery, setGallery] = useState([]);
@@ -37,7 +37,7 @@ function Gallery() {
         <div>
           <h3 className={`${styles.title} my-4`}>Gallery</h3>
         </div>
-        {loading && <h4 className={`${styles.title} my-4`}>Loading Photos...</h4>}
+        {loading && <h4 className={`${styles.title} my-4`}>Loading Images...</h4>}
         <div>
           <UploadWidget 
             setGallery={setGallery} 
