@@ -1,0 +1,26 @@
+.loader {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: white;
+}
+.loader.home {
+  height: 40vh;
+}
+
+.loader .loader-inner {
+  height: 100px;
+  text-align: center;
+  padding: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Set the color of the icon */
+.loader svg path,
+.loader svg rect {
+  fill: #4b7aa7;
+}
