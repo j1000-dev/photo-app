@@ -1,0 +1,13 @@
+.heart {
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  color: #000000; 
+}
+
+.fullHeart {
+  top: 8px;
+  left: 8px;
+  cursor: pointer;
+  color: #000000; 
+}

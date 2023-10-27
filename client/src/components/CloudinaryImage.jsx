@@ -1,6 +1,7 @@
 import { Image } from 'cloudinary-react';
 import { Heart } from "../components/icons/Heart";
 import { FullHeart } from "../components/icons/FullHeart";
+import styles from "./styling/CloudinaryImage.module.css"
 
 export function CloudinaryImage(props) {
   const { imageData, onClick, index, favorites } = props;
@@ -11,21 +12,11 @@ export function CloudinaryImage(props) {
       {
         isFavorited ? 
         <FullHeart 
-          className="position-absolute"
-          style={{
-            top: '10px',
-            left: '10px',
-            cursor: 'pointer'
-          }} 
+          className={`position-absolute ${styles.fullHeart}`}
           onClick={() => onClick(imageData.public_id, false, index)}
         /> :
         <Heart
-          className="position-absolute"
-          style={{
-            top: '10px',
-            left: '10px',
-            cursor: 'pointer'
-          }}
+          className={`position-absolute ${styles.heart}`}
           onClick={() => onClick(imageData.public_id, true, index)}
         />
 

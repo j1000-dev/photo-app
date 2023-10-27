@@ -1,12 +1,25 @@
+import {useState} from "react";
+
 export function Heart(props) {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseOver = (value) => {
+    setIsHovered(value);
+  };
+
   return (
-    <div className={className} style={style} onClick={onClick}>
+    <div 
+      className={className} 
+      onClick={onClick}       
+      onMouseOver={() => handleMouseOver(true)} 
+      onMouseOut={() => handleMouseOver(false)}
+    >
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         width="25" 
         height="25" 
-        fill="#FFFFFF" 
+        fill={isHovered ? '#FF0000' : '#FFFFFF'} 
         className="bi bi-heart" 
         viewBox="0 0 16 16"
         >
