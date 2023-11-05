@@ -1,0 +1,4 @@
+
+.dropdownToggle::after {
+  display: none;
+}

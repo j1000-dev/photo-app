@@ -1,11 +1,24 @@
+import {useState} from "react";
+
 export function FullHeart(props) {
-  const { className, style, onClick } = props;
+  const { className, onClick } = props;
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseOver = (value) => {
+    setIsHovered(value);
+  };
+
   return (
-    <div className={className} style={style} onClick={onClick}>
+    <div 
+      className={className} 
+      onClick={onClick}       
+      onMouseOver={() => handleMouseOver(true)} 
+      onMouseOut={() => handleMouseOver(false)}
+    >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      fill="#FF0000"
+      fill={isHovered ? '#FFFFFF' : '#FF0000'} 
       width="30" 
       height="30"
       className="w-6 h-6"
