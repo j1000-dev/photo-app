@@ -30,7 +30,7 @@ function SideNavBar() {
     <Sidebar 
       toggled={toggled}
       style={{height: '100vh', borderRight: 'none'}} 
-      backgroundColor='#000000'  
+      backgroundColor='#09080B'  
       breakPoint="md" 
       onBreakPoint={setBroken}
       onBackdropClick={() => setToggled(false)}

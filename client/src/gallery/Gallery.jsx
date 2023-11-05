@@ -40,6 +40,7 @@ function Gallery() {
         {loading && <h4 className={`${styles.title} my-4`}>Loading Images...</h4>}
         <div>
           <UploadWidget 
+            gallery={gallery}
             setGallery={setGallery} 
             favorites={favorites}
             setFavorites={setFavorites}

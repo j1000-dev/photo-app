@@ -26,7 +26,7 @@ function App() {
 
   return (
     isAuthenticated && (
-      <div style={{backgroundColor: '#000000'}}>
+      <div style={{backgroundColor: '#09080B'}}>
         <TopNavBar user={user}/>
         <div style={{display: 'flex'}}>
           <SideNavBar />

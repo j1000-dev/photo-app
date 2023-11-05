@@ -1,0 +1,9 @@
+
+.dropdownToggle::after {
+  display: none;
+}
+
+.modal {
+  background-color: #09080B;
+  color: white;
+}

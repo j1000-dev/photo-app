@@ -61,4 +61,19 @@ router.post('/remove-favorite-tag', (req, res) => {
   });
 })
 
+router.post('/add-image-to-album', (req, res) => {
+  const image = req.body.imageData;
+  const album = req.body.albumName;
+  cloudinary.v2.api.create_folder(album);
+  console.log(  `${album}/${image.public_id}`)
+  cloudinary.v2.uploader.rename(
+    image.public_id,
+    `${album}/${image.public_id}`
+  ).then(result => {
+    res.status(200).send({ message: 'Photo added to album', result: result })
+  }).catch(error => {
+    res.status(500).send({ message: 'Failed to add photo to album', error: error.message })
+  });
+})
+
 module.exports = router;

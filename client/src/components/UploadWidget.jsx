@@ -4,7 +4,7 @@ import axios from "axios";
 const UploadWidget = (props) => {
     const cloudinaryRef = useRef();
     const widgetRef = useRef();
-    const { className, favorites, setFavorites, setGallery } = props;
+    const { className, favorites, setFavorites, gallery,setGallery } = props;
  
     useEffect(() => {
       let successfulUploads = 0;
@@ -20,25 +20,27 @@ const UploadWidget = (props) => {
       widgetRef.current = cloudinaryRef.current.createUploadWidget({
         cloudName: cloudName,
         uploadPreset: uploadPreset
-      }, function(error, result) {
+      }, async function(error, result) {
         if (!error && result && result.event === "success") { 
           successfulUploads += 1;
         }
         //Only reload if we successfully upload and close the widget using 'Done'
         if (!error && result && result.event === "close") { 
           if (successfulUploads > 0) {
-            axios.get('/fetch-gallery-images').then(res => {
-              setGallery(res.data.resources);
-
+            await axios.get('/fetch-gallery-images').then(res => {
               //Dont add a favorites tag to a newly uploaded image
               const updatedImageStates = [...favorites];
               updatedImageStates.unshift(false);
+              setGallery(res.data.resources);
               setFavorites(updatedImageStates);
+              if (res.data.resources.length === gallery.length) {
+                window.location.reload()
+              }
             })
           }
         }
       })
-    }, [favorites, setFavorites, setGallery]); //Ensure that the effect runs only when these dependencies change
+    }, [favorites, gallery, setFavorites, setGallery]); //Ensure that the effect runs only when these dependencies change
 
     return (
       <button className={className} onClick={() => widgetRef.current.open()}>Upload</button>
