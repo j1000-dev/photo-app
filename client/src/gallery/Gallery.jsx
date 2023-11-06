@@ -1,22 +1,30 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import UploadWidget from "../components/UploadWidget";
+import { SearchForm } from "./SearchForm";
 import { CloudinaryImage } from "../components/CloudinaryImage";
 import styles from './Gallery.module.css';
+import { useSearchParams } from 'react-router-dom';
 
 function Gallery() {
   const [gallery, setGallery] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchParams] = useSearchParams();
 
   useEffect(()=> {
-    axios.get('/fetch-gallery-images').then(res => {
+    let search = searchParams.get('search')
+    axios.get('/fetch-gallery-images', {
+      params: {
+        search: search ? search : ''
+      }
+    }).then(res => {
       const initialFavorites = res.data.resources.map((d) => d.tags.includes("favorites"));
       setGallery(res.data.resources);
       setFavorites(initialFavorites);
       setLoading(false);
     })
-  }, [])
+  }, [searchParams])
 
   const handleFavoriteClick = async (public_id, isFavorited, index) => {
     if (isFavorited) {
@@ -48,6 +56,7 @@ function Gallery() {
           />
         </div>
       </div>
+      <SearchForm />
       <div className={styles.galleryContent}>
         <div className="container">
           <div className="row">

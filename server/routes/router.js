@@ -13,9 +13,10 @@ cloudinary.config({
  
  
 router.get('/fetch-gallery-images', (req, res) => {
+  const tag = req.query.search;
   cloudinary.v2.search
   .expression(
-    'resource_type:image'
+    `resource_type:image${(tag != '') ? ` AND tags=${tag}` : ''}`
     )
     .with_field('tags')
     .sort_by('created_at','desc')
@@ -93,6 +94,12 @@ router.post('/add-image-to-album', async (req, res) => {
 
 router.get('/get-root-folders', (req, res) => {
   cloudinary.v2.api.root_folders().then(result => res.send(result));
+})
+
+
+router.get('/search-by-tag', (req, res) => {
+  const tag = req.query.tag;
+  console.log(tag)
 })
 
 module.exports = router;

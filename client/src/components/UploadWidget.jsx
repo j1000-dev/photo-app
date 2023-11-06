@@ -27,14 +27,18 @@ const UploadWidget = (props) => {
         //Only reload if we successfully upload and close the widget using 'Done'
         if (!error && result && result.event === "close") { 
           if (successfulUploads > 0) {
-            await axios.get('/fetch-gallery-images').then(res => {
+            await axios.get('/fetch-gallery-images', {
+              params: {
+                search: ''
+              }
+            }).then(res => {
               //Dont add a favorites tag to a newly uploaded image
               const updatedImageStates = [...favorites];
               updatedImageStates.unshift(false);
               setGallery(res.data.resources);
               setFavorites(updatedImageStates);
               if (res.data.resources.length === gallery.length) {
-                window.location.reload()
+                window.location.reload('/gallery')
               }
             })
           }
