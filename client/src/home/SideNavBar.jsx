@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Link } from "react-router-dom";
-import { Heart } from "../components/icons/Heart";
 import { Image } from '../components/icons/Image';
 import { Folder } from '../components/icons/Folder';
+import axios from "axios";
 import styles from './SideNavBar.module.css';
 
 function SideNavBar() {
   const [broken, setBroken] = useState(false);
   const [toggled, setToggled] = useState(false);
+  const [albums, setAlbums] = useState([]);
+
+
+  useEffect(() => {
+    axios.get('/get-root-folders').then(res => setAlbums(res.data.folders))
+  }, [])
 
   const menuItemStyles = {
     button: {
@@ -18,10 +24,14 @@ function SideNavBar() {
         color: '#FFFFFF',
       },
       fontSize: '16px',
-      paddingLeft: '10px',
+      paddingLeft: '2rem',
     },
     label: ({ open }) => ({
       fontWeight: open ? 600 : undefined,
+    }),
+    subMenuContent: ({ level }) => ({
+      backgroundColor: '#09080B',
+      color: '#FFFFFF'
     }),
   };
 
@@ -49,6 +59,11 @@ function SideNavBar() {
             <span className={styles.title}>Albums</span>
           </div>
         </MenuItem>
+        {
+          albums && albums.map((album) => (
+            <MenuItem component={<Link to={`/albums/${album.name}`} />}>{album.name}</MenuItem>
+          ))
+        }
         <MenuItem component={<Link to="/favorites" />}>
           <div>
             <svg 

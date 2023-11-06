@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styles from './Edit.module.css';
 import { Image, Transformation } from 'cloudinary-react';
-import { Button } from "react-bootstrap";
+import { Button, Stack } from "react-bootstrap";
 
 export function Edit() {
   const [searchParams] = useSearchParams();
   const [transformation, setTransformation] = useState("");
+  const [prompt, setPrompt] = useState("");
+  const [pendingPrompt, setPendingPrompt] = useState("");
 
   return (
     <div className={styles.albumsContainer}>
@@ -16,10 +18,22 @@ export function Edit() {
       </div>
       <div className="d-flex my-3">
         <Button className="me-2" variant="dark" onClick={() => setTransformation('')}>Clear All</Button>
-        <Button className="me-2" variant="secondary"onClick={() => setTransformation('generative-fill')}>Apply Generative Fill</Button>
+        <Button 
+          className="me-2" 
+          variant="secondary"
+          onClick={() => {
+            setTransformation('generative-fill');
+            setPrompt(pendingPrompt)
+          }}>
+            Apply Generative Fill
+        </Button>
         <Button className="me-2" variant="secondary"onClick={() => setTransformation('blur')}>Apply blur</Button>
         <Button className="me-2" variant="secondary"onClick={() => setTransformation('gray')}>Convert to gray</Button>
         <Button className="me-2" variant="secondary"onClick={() => setTransformation('pixelate')}>Pixelate</Button>
+      </div>
+      <div className="my-3">
+      <label htmlFor="prompt" className="text-light me-3">Prompt</label>
+          <input id="prompt" value={pendingPrompt} onChange={(e) => setPendingPrompt(e.target.value)}/>
       </div>
       <div className="d-flex justify-content-between">
         <div className="mx-5">
@@ -39,7 +53,7 @@ export function Edit() {
               className="img-fluid"
               alt="an image of something"
             >
-              <Transformation aspectRatio="16:9" background="gen_fill" crop="pad" />
+              <Transformation aspectRatio="16:9" background={`gen_fill:${prompt}`} crop="pad" />
             </Image>
           </div>
         }
