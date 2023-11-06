@@ -1,0 +1,15 @@
+.title {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.editContainer {
+  height: 100vh; 
+  width: 100vw;
+  overflow-y: scroll; 
+  padding: 20px; 
+}
+
+.editContent {
+  padding: 20px; 
+}

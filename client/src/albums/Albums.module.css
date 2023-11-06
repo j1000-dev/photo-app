@@ -1,0 +1,19 @@
+.title {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.albumsContainer {
+  height: 100vh; 
+  width: 100vw;
+  overflow-y: scroll; 
+  padding: 20px; 
+}
+
+.albumsContent {
+  padding: 20px; 
+}
+
+.uploadBtn {
+  margin-right: 30px;
+}

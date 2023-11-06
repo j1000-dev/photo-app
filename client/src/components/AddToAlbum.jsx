@@ -3,8 +3,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FolderPlus } from './icons/FolderPlus';
+import { EditImage } from './icons/EditImage';
+import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
-import styles from './styling/AddToAlbum.module.css';
+import styles from './styling/ImageMenu.module.css';
 import axios from "axios";
 
 export function AddToAlbum(props) {
@@ -47,6 +49,10 @@ export function AddToAlbum(props) {
           <Dropdown.Item onClick={handleShow}>
             <FolderPlus />
             <span className="px-2">Add to Album</span>
+          </Dropdown.Item>
+          <Dropdown.Item as={Link} to={`/edit?publicId=${encodeURIComponent(imageData.public_id)}`}>
+            <EditImage />
+            <span className="px-2">Edit</span>
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown> 

@@ -10,6 +10,9 @@ import Favorites from './favorites/Favorites';
 import SideNavBar from './home/SideNavBar';
 import TopNavBar from './home/TopNavBar';
 import Loader from "./components/utils/Loader";
+import { AlbumList } from './albums/AlbumList';
+import { Edit } from './edit/Edit';
+
 
 function App() {
   const { isAuthenticated, user, isLoading, loginWithRedirect } = useAuth0();
@@ -35,7 +38,8 @@ function App() {
             <Route path="/albums" element={<Albums />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/" element={<Navigate to="/gallery" replace />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/albums/:folder" element={<AlbumList />} />
+            <Route path="/edit" element={<Edit />} />
           </Routes>
         </div>
       </div>)
