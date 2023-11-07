@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styles from './Edit.module.css';
 import { Image, Transformation } from 'cloudinary-react';
-import { Button, Stack } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 export function Edit() {
   const [searchParams] = useSearchParams();

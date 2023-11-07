@@ -12,6 +12,7 @@ function Albums() {
       setFolders(res.data.folders)
     })
   }, [])
+  
   return (
     <div className={styles.albumsContainer}>
       <div className=" d-flex justify-content-between">

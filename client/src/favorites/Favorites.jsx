@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import { CloudinaryImage } from "../components/CloudinaryImage"
+import { CloudinaryImage } from "../components/CloudinaryImage";
 import styles from './Favorites.module.css';
 
 function Favorites() {

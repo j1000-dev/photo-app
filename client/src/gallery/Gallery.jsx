@@ -52,7 +52,7 @@ function Gallery() {
             setGallery={setGallery} 
             favorites={favorites}
             setFavorites={setFavorites}
-            className={`btn btn-primary my-4 ${styles.uploadBtn}`} 
+            className={`btn btn-secondary my-4 ${styles.uploadBtn}`} 
           />
         </div>
       </div>

@@ -38,7 +38,7 @@ export function AlbumList() {
         <div>
           <h3 className={`${styles.title} my-4`}>Album {folder}</h3>
         </div>
-        {loading && <h4 className={`${styles.title} my-4`}>Loading Album...</h4>}
+        {loading && <h4 className={`${styles.title} my-4`}>Loading Albums...</h4>}
       </div>
       <div className={styles.albumsContent}>
         <div className="container">

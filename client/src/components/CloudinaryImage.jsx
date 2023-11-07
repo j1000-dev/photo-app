@@ -1,7 +1,7 @@
 import { Image } from 'cloudinary-react';
 import { Heart } from "../components/icons/Heart";
 import { FullHeart } from "../components/icons/FullHeart";
-import { AddToAlbum } from "../components/AddToAlbum";
+import { ImageMenu } from "../components/ImageMenu";
 import styles from "./styling/CloudinaryImage.module.css";
 
 export function CloudinaryImage(props) {
@@ -27,7 +27,7 @@ export function CloudinaryImage(props) {
         className="img-fluid"
         alt="an image of something"
       />
-      <AddToAlbum
+      <ImageMenu
         imageData={imageData}
         className={`position-absolute ${styles.menuIcon}`}
       />

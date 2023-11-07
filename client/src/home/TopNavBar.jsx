@@ -2,7 +2,8 @@ import {Navbar, Nav} from 'react-bootstrap';
 import Logout from "../components/Logout";
 
 function TopNavBar(props) {
-  const { user } = props
+  const { user } = props;
+  
   return (
     <Navbar expand="lg" className="bg-black" style={{ borderBottom: '1px solid white' }}>
       <Navbar.Toggle />
